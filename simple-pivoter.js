@@ -25,16 +25,16 @@ $(function() {
 
     }
 
-    /* Input reversing function, from an arrays of arrays to another one
+    /* Input pivoting function, from an arrays of arrays to an object of objects of arrays
      * Function parameters:
      * - an array of arrays
-     * Returns an array of arrays
+     * Returns an object of objects of arrays
     */
-    function reverse(input) {
+    function pivot(input) {
 
         // Parameters normalization and default values
         var input = input || [],
-            output = [];
+            output = {}; // An object with row ids as keys
 
         // Output computation using underscore library
         _.each( // For each line
@@ -44,37 +44,23 @@ $(function() {
              * - ln: line number
             */
             function(line,ln) {
-                // Ignoring first line (ln = 0), because contains column headers
-                if (ln) {
-                    _.each( // For each field
-                        line,
-                        /* Parameters:
-                        * - field: a field value
-                        * - fn: field number (equal to column numbero in the original text input)
-                        */
-                        function(field,fn) {
-                            // Ignoring first column, because contains row headers
-                            if (fn) {
-                                output.push([
-                                    line[0], // Current row name (first element of line)
-                                    input[0][fn], // Current column name
-                                    field // Current field value
-                                ]);
-                            }
-                        }
-                    );
-                }
+                // In position 0 there are row ids
+                // In position 1 there are col ids
+                // In position 2 there are values to concatenate
+                output[line[0]] = output[line[0]] || {};
+                output[line[0]][line[1]] = output[line[0]][line[1]] || [];
+                output[line[0]][line[1]].push(line[2]);
             }
         );
 
-        // Returns an array of arrays
+        // Returns an object of objects of arrays
         return output;
 
     }
 
     /* Output formatting, from an array of arrays to a string (tab separated values)
      * Function parameters:
-     * - data to be formatted (an array of arrays)
+     * - data to be formatted (an object of objects of arrays)
      * - field separator (ie. TAB for tab separated values)
      * - line separator (ie. new line char)
      * Returns a string
@@ -82,14 +68,23 @@ $(function() {
    function format(data,field_separator,line_separator) {
         
         // Parameters normalization and default values
-        var text = text || "",
+        var data = data || {},
             field_separator = field_separator || "\t",
             line_separator = line_separator || "\n";
 
+        var rows = _.sortBy(_.keys(data)),
+            cols = _.sortBy(_.uniq(_.flatten(_.map(_.values(data), function(v) { return _.keys(v)}))));
+
         // Computes a string using underscore library
-        return _.map(data, function(line) {
-            return line.join(field_separator);
-        }).join(line_separator);
+        return _.flatten([
+            _.flatten(["",cols]).join(field_separator),
+            _.map(rows, function(row) {
+                return _.flatten([
+                    row,
+                    _.map(cols, function(col) { return (data[row][col] || [""]).join(','); })
+                ]).join(field_separator);
+            })
+        ]).join(line_separator);
 
     }
 
@@ -97,7 +92,7 @@ $(function() {
     $input.change(function() {
         $output.val(
             format(
-                reverse(
+                pivot(
                     parse($(this).val())
                 )
             )
