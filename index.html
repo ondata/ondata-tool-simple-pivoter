@@ -1,219 +1,265 @@
 <!DOCTYPE html>
 <html>
-    <head>
 
-        <meta charset="UTF-8">
-        <base href="./" target="_blank">
+<head>
 
-        <title>Simple Table Pivoter by onData</title>
+    <meta charset="UTF-8">
+    <base href="./" target="_blank">
 
-        <!-- Underscore -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js" integrity="sha256-obZACiHd7gkOk9iIL/pimWMTJ4W/pBsKu+oZnSeBIek=" crossorigin="anonymous"></script>
+    <title>Simple Table Pivoter by onData</title>
 
-        <!-- jQuery -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <!-- Underscore -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js" integrity="sha256-obZACiHd7gkOk9iIL/pimWMTJ4W/pBsKu+oZnSeBIek="
+        crossorigin="anonymous"></script>
 
-        <!-- Bootstrap -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+        crossorigin="anonymous"></script>
 
-        <!-- Meta -->   
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="description" content="onData | Associazione per la promozione di trasparenza e open data" />
-        <meta name="author" content="onData" />
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
 
-        <!-- Theme -->
-        <!-- =======================================================
+    <!-- Meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="onData | Associazione per la promozione di trasparenza e open data" />
+    <meta name="author" content="onData" />
+
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
+
+    <!-- Theme -->
+    <!-- =======================================================
             Theme Name: Moderna
             Theme URL: https://bootstrapmade.com/free-bootstrap-template-corporate-moderna/
             Author: BootstrapMade
             Author URL: https://bootstrapmade.com
         ======================================================= -->
-        <link href="http://ondata.it/css/style.css" rel="stylesheet">
-        <link href="http://ondata.it/css/custom.css" rel="stylesheet">
-        <link href="http://ondata.it/skins/default.css" rel="stylesheet" />
+    <link href="http://ondata.it/css/style.css" rel="stylesheet">
+    <link href="http://ondata.it/css/custom.css" rel="stylesheet">
+    <link href="http://ondata.it/skins/default.css" rel="stylesheet" />
 
-        <!-- Codice custom -->
-        <link rel="stylesheet" href="simple-pivoter.css">
-        <script src="simple-pivoter.js"></script>
+    <!-- Codice custom -->
+    <link rel="stylesheet" href="simple-pivoter.css">
+    <script src="simple-pivoter.js"></script>
 
-    </head>
-    <body>
-        <div id="wrapper">
 
-            <!-- start header -->
-            <header>
-                <div class="navbar navbar-default navbar-static-top navbar-fixed-top">
-                    <div class="wrapper">
-                        <div class="container">
+</head>
 
-                            <div class="navbar-header">
-                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                </button>
-                                <a class="navbar-brand" href="http://ondata.it/">
-                                    <img src="http://ondata.it/img/ondata_logo.png" style="max-height:35px;" />
-                                </a>
-                            </div>
+<body>
+    <div id="wrapper">
 
-                            <div class="navbar-collapse collapse ">
-                                <ul class="nav navbar-nav">
-                                    <li class=""><a href="http://ondata.it/">Home</a></li>
-                                    <li><a href="http://ondata.it/progetti.html">Progetti</a></li>
-                                    <li class="active"><a href="http://ondata.it/strumenti.html">Strumenti</a></li>
-                                    <li><a href="http://ondata.it/risorse.html">Risorse</a></li>
-                                    <li><a href="http://blog.ondata.it/">Blog</a></li>
-                                    <li><a href="http://ondata.it/contact.html">Contatti</a></li>
-                                </ul>
-                            </div>
+        <!-- start header -->
+        <header>
+            <div class="navbar navbar-default navbar-static-top navbar-fixed-top">
+                <div class="wrapper">
+                    <div class="container" id="nav-container">
+
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="http://ondata.it/">
+                                <img id="logo" src="http://ondata.it/img/ondata_logo.png" style="max-height:35px;" />
+                            </a>
+                        </div>
+
+                        <div class="navbar-collapse collapse ">
+                            <ul class="nav navbar-nav">
+                                <li class=""><a href="http://ondata.it/">Home</a></li>
+                                <li><a href="http://ondata.it/progetti.html">Progetti</a></li>
+                                <li class="active"><a href="http://ondata.it/strumenti.html">Strumenti</a></li>
+                                <li><a href="http://ondata.it/risorse.html">Risorse</a></li>
+                                <li><a href="http://blog.ondata.it/">Blog</a></li>
+                                <li><a href="http://ondata.it/contact.html">Contatti</a></li>
+                            </ul>
                         </div>
                     </div>
                 </div>
+            </div>
+        </header>
+
+
+        <!-- start main container -->
+        <div id="main-container" class="container">
+
+            <!-- illustration and animation -->
+
+            <div>
+                <img id="cavo" src="pics/cavo.png" alt="">
+            </div>
+
+            <header>
+                <h1 id="title">Simple Table Pivoter by onData</h1>
             </header>
 
-            <!-- start main container -->
-            <div class="container" style="padding-top: 110px;">
+            <div class="row">
 
-                <header style="text-align: center" >
-                    <h1>Simple Table Pivoter by onData</h1>
-                </header>
+                <!-- input textarea -->
+                <div class="col-lg-6">
+                    <section>
+                        <div class="post-image">
+                            <div class="post-heading">
 
-                <div class="row">
+                                <!-- graphical tweaks -->
 
-                    <!-- input textarea -->
-                    <div class="col-lg-6">
-                        <section>
-                                <div class="post-image">
-                                    <div class="post-heading">
-                                        <h3>Incolla qui la tua tabella in Tab Separated Value...</h3>
-                                        <p><textarea placeholder="b    2016    2
+                                <img id="terminal1" src="pics/terminal.png" alt="">
+                                <img id="terminal2" src="pics/terminal.png" alt="">
+                                <img id="postit" src="pics/stickyNorm.png" alt="">
+                                <h3 class="copypaste">Incolla qui la tua tabella in Tab Separated Value...</h3>
+                                <p class="textbox_container"><textarea placeholder="b    2016    2
 b    2016    3
 c    2016    3
 a    2017    3
 b    2017    2
-c    2017    1" class="jsboxout" id="input"></textarea></p>
-                                    </div>
-                                </div>
-                        </section>
-                    </div>
+c    2017    1"
+                                        class="jsboxout" id="input"></textarea></p>
+                            </div>
+                        </div>
+                    </section>
+                </div>
 
-                    <!-- output textarea -->
-                    <div class="col-lg-6">
-                        <section>
-                                <div class="post-image">
-                                    <div class="post-heading">
-                                        <h3>... e copia da qui la tua tabella pivot (valori concatenati) in Tab Separated Value.</h3>
-                                        <p><textarea placeholder="    2016    2017
+                <!-- output textarea -->
+                <div class="col-lg-6">
+                    <section>
+                        <div class="post-image">
+                            <div class="post-heading">
+                                <h3 class="copypaste">... e copia da qui la tua tabella pivot (valori concatenati) in
+                                    Tab Separated Value.</h3>
+                                <p class="textbox_container"><textarea placeholder="    2016    2017
 a        3
 b    2,3    2
-c    3    1" class="jsboxout" id="output"></textarea></p>
-                                    </div>
-                                </div>
-                        </section>
-                    </div>
-
-                    <!-- general info -->
-                    <div class="col-lg-12">
-                        <h3>Riguardo questo strumento</h3>
-                        <p>L'esigenza per questo strumento nasce dalla mancanza di uno modo semplice per risolvere un problema semplice. Spesso i fogli di calcolo non permettono di scegliere la concatenazione di stringhe come funzione di aggregazione di una tabella pivot, ma può essere molto utile in alcuni casi. Per approfondire leggi <a href="https://github.com/ondata/ondata-tool-pivot-reverser/issues/2">questa breve spiegazione</a>.</p>
-                    </div>
-
+c    3    1"
+                                        class="jsboxout" id="output"></textarea></p>
+                            </div>
+                        </div>
+                    </section>
                 </div>
+
+
 
             </div>
 
-            <!-- start footer -->
-            <footer>
-                <div class="container">
-                    <div class="row">
+        </div>
 
-                        <div class="col-lg-3">
-                            <div class="widget">
-                                <h5 class="widgetheading">About</h5>
-                                <hr class="marginbot-50">
-                                <address>
-                                    <strong>onData<br>Associazione di promozione sociale</strong><br>
-                                    Via Damiani Almeyda, 5<br>
-                                    90141 - PALERMO<br>
-                                    Codice fiscale: 97309210827<br>
-                                    <strong>Presidente</strong>: Andrea Borruso<br>
-                                    <strong>Statuto: </strong><a href="http://ondata.it/docs/ondata-statuto.pdf">Scarica <i class="fa fa-download" aria-hidden="true"></i></a>
-                                </address>
-                                <p>
-                                    Il dominio ondata.it ci è stato gentilmente donato da <strong>Francesco Lato (<a href="https://twitter.com/lowcost" target="_blank">@lowcost</a>)</strong>.
-                                    Tutti i contenuti di Ondata.it sono rilasciati con <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">licenza CC-BY SA 4.0</a>.<br>
-                                    Questo sito è pubblico anche su <a href="https://github.com/ondata/ondatawebsite">Github.com</a>
-                                </p>
-                            </div>
+        <!-- start footer -->
+        <footer>
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-3">
+                        <div class="widget">
+                            <h5 class="widgetheading">About</h5>
+                            <hr class="marginbot-50">
+                            <address>
+                                <strong>onData<br>Associazione di promozione sociale</strong><br>
+                                Via Damiani Almeyda, 5<br>
+                                90141 - PALERMO<br>
+                                Codice fiscale: 97309210827<br>
+                                <strong>Presidente</strong>: Andrea Borruso<br>
+                                <strong>Statuto: </strong><a href="http://ondata.it/docs/ondata-statuto.pdf">Scarica <i
+                                        class="fa fa-download" aria-hidden="true"></i></a>
+                            </address>
+                            <p>
+                                Il dominio ondata.it ci è stato gentilmente donato da <strong>Francesco Lato (<a href="https://twitter.com/lowcost"
+                                        target="_blank">@lowcost</a>)</strong>.
+                                Tutti i contenuti di Ondata.it sono rilasciati con <a href="https://creativecommons.org/licenses/by-sa/4.0/"
+                                    target="_blank">licenza CC-BY SA 4.0</a>.<br>
+                                Questo sito è pubblico anche su <a href="https://github.com/ondata/ondatawebsite">Github.com</a>
+                            </p>
                         </div>
+                    </div>
 
-                        <div class="col-lg-3">
-                            <div class="widget">
-                                <h5 class="widgetheading">Sostieni OnData! <i class="fa fa-heart" aria-hidden="true"></i></h5>
-                                <hr class="marginbot-50">
-                                <p>Sostieni le attività dell'associazione Ondata con una donazione. Puoi donare tramite:
+                    <div class="col-lg-3">
+                        <div class="widget">
+                            <h5 class="widgetheading">Sostieni OnData! <i class="fa fa-heart" aria-hidden="true"></i></h5>
+                            <hr class="marginbot-50">
+                            <p>Sostieni le attività dell'associazione Ondata con una donazione. Puoi donare tramite:
                                 <ul>
                                     <li>Bonifico Bancario <br> <strong>IBAN:</strong> IT36A0501804600000000220556</li>
                                     <li>Paypal
                                         <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
                                             <input type="hidden" name="cmd" value="_s-xclick">
                                             <input type="hidden" name="hosted_button_id" value="5NVA5STRUX46Y">
-                                            <input type="image" src="https://www.paypalobjects.com/it_IT/IT/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal è il metodo rapido e sicuro per pagare e farsi pagare online.">
-                                            <img alt="" border="0" src="https://www.paypalobjects.com/it_IT/i/scr/pixel.gif" width="1" height="1">
+                                            <input type="image" src="https://www.paypalobjects.com/it_IT/IT/i/btn/btn_donateCC_LG.gif"
+                                                border="0" name="submit" alt="PayPal è il metodo rapido e sicuro per pagare e farsi pagare online.">
+                                            <img alt="" border="0" src="https://www.paypalobjects.com/it_IT/i/scr/pixel.gif"
+                                                width="1" height="1">
                                         </form>
                                     </li>
                                 </ul>
                                 <br>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-3">
-                            <div class="widget">
-                                <h5 class="widgetheading">Ondata su Flickr</h5>
-                                <hr class="marginbot-50">
-                                <div class="flickr_badge">
-                                   <script type="text/javascript" src="https://www.flickr.com/badge_code_v2.gne?count=18&amp;display=random&amp;size=s&amp;layout=x&amp;source=user&amp;user=148165801@N05"></script>
-                                </div>
-                                <div class="clear"></div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-3">
-                            <div class="widget">
-                                <a class="twitter-timeline" data-height="360" href="https://twitter.com/ondatait">Tweets by ondatait</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-                <div id="sub-footer">
-                    <div class="container">
-                        <div class="row">
-
-                            <div class="col-lg-6">
-                                <div class="copyright">
-                                    <p>&copy; Moderna Theme. All right reserved.</p>
-                                    <div class="credits">
-                                        <a href="https://bootstrapmade.com/">Free Bootstrap Themes</a> by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-6">
-                                <ul class="social-network">
-                                    <li><a href="http://twitter.com/ondatait" data-placement="top" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a href="https://www.flickr.com/photos/ondatait" data-placement="top" title="Flickr"><i class="fa fa-flickr"></i></a></li>
-                                    <li><a href="https://github.com/ondata/" data-placement="top" title="Github"><i class="fa fa-github"></i></a></li>
-                                </ul>
-                            </div>
                         </div>
                     </div>
-                </div>
 
-            </footer>
+                    <div class="col-lg-3">
+                        <div class="widget">
+                            <h5 class="widgetheading">Ondata su Flickr</h5>
+                            <hr class="marginbot-50">
+                            <div class="flickr_badge">
+                                <script type="text/javascript" src="https://www.flickr.com/badge_code_v2.gne?count=18&amp;display=random&amp;size=s&amp;layout=x&amp;source=user&amp;user=148165801@N05"></script>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3">
+                        <div class="widget">
+                            <a class="twitter-timeline" data-height="360" href="https://twitter.com/ondatait">Tweets by
+                                ondatait</a>
+                            <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div id="sub-footer">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-lg-6">
+                            <div class="copyright">
+                                <p>&copy; Moderna Theme. All right reserved.</p>
+                                <div class="credits">
+                                    <a href="https://bootstrapmade.com/">Free Bootstrap Themes</a> by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <ul class="social-network">
+                                <li><a href="http://twitter.com/ondatait" data-placement="top" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="https://www.flickr.com/photos/ondatait" data-placement="top" title="Flickr"><i
+                                            class="fa fa-flickr"></i></a></li>
+                                <li><a href="https://github.com/ondata/" data-placement="top" title="Github"><i class="fa fa-github"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </footer>
+    </div>
+
+
+    <!-- Modale -->
+    <div id="modale" class="modale">
+        <div class="contenuto_modale">
+            <span id="close">&times;</span>
+            <h3>Riguardo questo strumento</h3>
+            <p>L'esigenza per questo strumento nasce dalla mancanza di un modo semplice per risolvere un problema
+                semplice. Spesso i fogli di calcolo non permettono di scegliere la concatenazione di stringhe come
+                funzione di aggregazione di una tabella pivot, ma può essere molto utile in alcuni casi. Per
+                approfondire leggi questa breve spiegazione.</p>
         </div>
-    </body>
+    </div>
+    <script src="animation-trigger.js"></script>
+    <script src="InfosTrigger.js"></script>
+</body>
+
 </html>
